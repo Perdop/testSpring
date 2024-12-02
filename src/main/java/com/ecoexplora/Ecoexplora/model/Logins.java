@@ -17,6 +17,7 @@ public class Logins {
 	private Integer id;
 	private String user;
 	private String password;
+	private Integer img;
 	
 	public Logins(String user, String password) {	
 		this.user = user;
@@ -39,7 +40,14 @@ public class Logins {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+	public Integer getImg() {
+		return img;
+	}
+
+	public void setImg(Integer img) {
+		this.img = img;
+	}
+
 	public Logins() {
 		
 	}
