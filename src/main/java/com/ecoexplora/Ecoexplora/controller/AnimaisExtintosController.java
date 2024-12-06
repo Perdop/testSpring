@@ -48,6 +48,7 @@ public class AnimaisExtintosController {
         current.setClasse((Integer) body.get("classe"));
         current.setExistentes((Integer) body.get("existentes"));
         current.setEstado((String) body.get("estado"));
+        current.setImg((String) body.get("img"));
         
         ecoexploraRepositoryAnimals.save(current);
         
@@ -63,8 +64,9 @@ public class AnimaisExtintosController {
         Integer classe = (Integer) body.get("classe");
         Integer existentes = (Integer) body.get("existentes");
         String estado = (String) body.get("estado");
+        String img = (String) body.get("img");
 
-        AnimaisExtintos newAnimal = new AnimaisExtintos(nome, sobre, classe, existentes, estado);
+        AnimaisExtintos newAnimal = new AnimaisExtintos(nome, sobre, classe, existentes, estado, img);
 
         return ecoexploraRepositoryAnimals.save(newAnimal);
     }
