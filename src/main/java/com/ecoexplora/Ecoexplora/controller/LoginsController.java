@@ -5,8 +5,6 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,36 +26,8 @@ public class LoginsController {
 	public List<Logins> getAllUsers(){
 		return ecoexploraRepository.findAll();
 	}
-	@GetMapping("/getUserById/{id}")
-	public ResponseEntity<Logins> getUserById(@PathVariable("id") Integer id) {
-	    Optional<Logins> user = ecoexploraRepository.findById(id);
-	    if (user.isPresent()) {
-	        return ResponseEntity.ok(user.get());
-	    } else {
-	        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-	    }
-	}
-
-	@GetMapping("/getUser/{user}")
-	public ResponseEntity<Logins> getUserByUsername(@PathVariable("user") String user) {
-	    Optional<Logins> username = ecoexploraRepository.findByUser(user);
-	    
-	    if (username.isPresent()) {
-	        return ResponseEntity.ok(username.get());
-	    } else {
-	        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-	    }
-	}
 	
-	@GetMapping("/findUser/{user}")
-	public boolean findByUsername(@PathVariable("user") String user) {
-	    Optional<Logins> username = ecoexploraRepository.findByUser(user);
-	    return username.isPresent();
-	}
-
-
-	
-    @DeleteMapping("/removeUser/{identity}")
+    @DeleteMapping("/remove/{identity}")
     public boolean deleteRow(@PathVariable("identity") Integer id){
         if(!ecoexploraRepository.findById(id).equals(Optional.empty())){
         	ecoexploraRepository.deleteById(id);
@@ -66,7 +36,7 @@ public class LoginsController {
         return false;
     }
     
-    @PutMapping("/updateUser/{identity}")
+    @PutMapping("/update/{identity}")
     public Logins updateAddress(@PathVariable("identity") Integer id,
                                  @RequestBody Map<String, String> body){
 
@@ -77,7 +47,7 @@ public class LoginsController {
         return current;
     }
     
-    @PostMapping("/addUser")
+    @PostMapping("/add")
     public Logins create(@RequestBody Map<String, String> body){
 
         String user = body.get("user");
