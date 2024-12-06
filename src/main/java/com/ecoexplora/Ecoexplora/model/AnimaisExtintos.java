@@ -20,13 +20,15 @@ public class AnimaisExtintos {
 	private Integer classe;
 	private Integer existentes;
 	private String estado;
+	private String img;
 	
-	public AnimaisExtintos(String nome, String sobre, Integer classe, Integer existentes, String estado) {	
+	public AnimaisExtintos(String nome, String sobre, Integer classe, Integer existentes, String estado, String img) {	
 		this.nome = nome;
 		this.sobre = sobre;
 		this.classe = classe;
 		this.existentes = existentes;
 		this.estado = estado;
+		this.img = img;
 	}
 	
 	public Integer getId() {
@@ -47,6 +49,9 @@ public class AnimaisExtintos {
 	public String getEstado() {
 		return estado;
 	}
+	public String getImg() {
+		return img;
+	}
 	
 	public void setNome(String user) {
 		this.nome = user;
@@ -62,6 +67,9 @@ public class AnimaisExtintos {
 	}
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+	public void setImg(String img) {
+		this.img = img;
 	}
 	
 	public AnimaisExtintos() {
